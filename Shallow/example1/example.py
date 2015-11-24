@@ -65,7 +65,26 @@ The network is trained, time to evaluate it!
 # Show a classification report
 
 preds = dbn.predict(testX)
-print classification_report(testY,preds) #Table of accuracies 
+print classification_report(testY, preds)  # Table of accuracies 
 
+"""
+Inspect individually rather than on aggregate 
+as a further demonstration of the network
 
+"""
 
+# Randomly select a few of the test instance
+for i in np.random.choice(np.arange(0, len(testY)), size=(10,)) :
+    # classify the digit
+    pred = dbn.predict(np.atleast_2d(testX[i]))
+    
+    # reshape feature vector to be a 28x28 pixel image,
+    # change data type to be an unsigned 8-bit integer
+    image =(testX[i] * 255).reshape((28,28)).astype("uint8")
+    
+    #Show image and prediction
+    print "Actual digit is {0}, predicted {1}".format(testY[i],pred[0])
+    cv2.imshow("Digit",image)
+    cv2.waitKey(0)
+    
+         
