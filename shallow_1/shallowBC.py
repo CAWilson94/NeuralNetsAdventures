@@ -15,4 +15,25 @@ There are 64x50 values in the file thus, number of inputs to network = 64x50 = 3
 The number of outputs will be 6 for the 6 different defect types.
 
 '''
+import pandas as pd 
+import numpy as np
+
+print "hello"
+
+# Import the csv file
+#---------------------
+train_data = pd.read_csv(open('BC27.L3D.csv'))
+
+#Generate training data
+#----------------------
+
+# Convert into pandas data frame
+train = pd.DataFrame(train_data)
+print "panda data frame"
+# Get data into a bunch object
+type(train)
+print "bunches"
+
+
+
 
